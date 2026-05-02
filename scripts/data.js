@@ -1,0 +1,48 @@
+// Données simulées comme si elles venaient de plusieurs sites
+const listingsData = [
+  {
+    id: 1,
+    title: 'Appartement cosy centre-ville',
+    city: 'Lyon',
+    type: 'appartement',
+    price: 850,
+    surface: 45,
+    source: 'SeLoger',
+  },
+  {
+    id: 2,
+    title: 'Studio rénové proche fac',
+    city: 'Toulouse',
+    type: 'studio',
+    price: 520,
+    surface: 25,
+    source: 'Leboncoin',
+  },
+  {
+    id: 3,
+    title: 'Grande maison avec jardin',
+    city: 'Nantes',
+    type: 'maison',
+    price: 1200,
+    surface: 95,
+    source: 'PAP',
+  },
+  {
+    id: 4,
+    title: 'Loft moderne vue sur la mer',
+    city: 'Marseille',
+    type: 'appartement',
+    price: 1400,
+    surface: 60,
+    source: 'SeLoger',
+  },
+  {
+    id: 5,
+    title: 'Petit studio meublé',
+    city: 'Lille',
+    type: 'studio',
+    price: 480,
+    surface: 20,
+    source: 'Leboncoin',
+  },
+]
