@@ -2,41 +2,33 @@
 <html lang="fr">
 
 <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>SynthImmo | Agrégateur de locations</title>
-   <link rel="stylesheet" href="styles.css" />
-   <script defer src="./scripts/data.js"></script>
-   <script defer src="./scripts/utils.js"></script>
-   <script defer src="./scripts/app.js"></script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Agregator - Drag & Drop</title>
+   <link rel="stylesheet" href="styles/main.css">
+   <link rel="stylesheet" href="styles/widgets.css">
+   <!-- SortableJS pour le drag-and-drop -->
+   <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 </head>
 
 <body>
-   <main class="container">
-      <h1>SynthImmo</h1>
-      <p class="subtitle">Votre agrégateur synthwave de locations immobilières 🏙️</p>
-
-      <div class="filters">
-         <input type="text" id="search-city" placeholder="Rechercher une ville..." />
-         <select id="type-filter">
-            <option value="all">Tous types</option>
-            <option value="appartement">Appartement</option>
-            <option value="maison">Maison</option>
-            <option value="studio">Studio</option>
-         </select>
-         <input type="number" id="max-price" placeholder="Prix max (€)" />
-         <select id="sort-filter">
-            <option value="none">Tri : Aucun</option>
-            <option value="price-asc">Prix croissant</option>
-            <option value="price-desc">Prix décroissant</option>
-            <option value="surface-asc">Surface croissante</option>
-            <option value="surface-desc">Surface décroissante</option>
-         </select>
-         <button id="apply-filters">Filtrer</button>
+   <div class="app-container">
+      <!-- Barre d'ajout de flux -->
+      <div class="toolbar">
+         <input type="text" id="rss-url-input" placeholder="Coller l'URL du flux RSS ici...">
+         <button id="add-rss-btn" class="neon-button">Ajouter / Add</button>
       </div>
 
-      <div id="listings" class="listings"></div>
-   </main>
+      <!-- Zone des widgets (drag-and-drop) -->
+      <div id="widgets-container" class="widgets-container">
+         <!-- Les widgets seront ajoutés ici dynamiquement -->
+      </div>
+   </div>
+
+   <script src="scripts/rss-parser.js"></script>
+   <script src="scripts/widget-manager.js"></script>
+   <script src="scripts/drag-and-drop.js"></script>
+   <script src="scripts/app.js"></script>
 </body>
 
 </html>

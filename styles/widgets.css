@@ -1,0 +1,94 @@
+/* Conteneur des widgets */
+.widgets-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  min-height: 80vh;
+}
+
+/* Style d'un widget */
+.widget {
+  background-color: var(--bg-darker);
+  border: 2px solid var(--neon-blue);
+  border-radius: 5px;
+  padding: 15px;
+  cursor: move; /* Curseur "déplacer" */
+  transition: all 0.3s;
+  box-shadow: 0 0 10px rgba(5, 217, 232, 0.3);
+}
+
+.widget:hover {
+  box-shadow: 0 0 20px rgba(5, 217, 232, 0.5);
+  border-color: var(--neon-pink);
+}
+
+/* En-tête du widget (pour le drag) */
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--neon-blue);
+  margin-bottom: 10px;
+  cursor: move; /* Zone de drag */
+}
+
+.widget-title {
+  color: var(--neon-blue);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+}
+
+/* Contenu du widget (articles RSS) */
+.widget-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.widget-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.widget-content::-webkit-scrollbar-thumb {
+  background-color: var(--neon-purple);
+  border-radius: 4px;
+}
+
+/* Bouton de suppression */
+.widget-delete {
+  background: none;
+  border: none;
+  color: var(--neon-pink);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 5px;
+}
+
+.widget-delete:hover {
+  text-shadow: 0 0 5px var(--neon-pink);
+}
+
+/* Barre d'outils */
+.toolbar {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  background-color: var(--bg-darker);
+  border-bottom: 2px solid var(--neon-purple);
+}
+
+#rss-url-input {
+  flex: 1;
+  padding: 10px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--neon-blue);
+  color: var(--neon-blue);
+  font-family: 'Orbitron', sans-serif;
+}
+
+#rss-url-input:focus {
+  outline: none;
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 10px var(--neon-pink);
+}
