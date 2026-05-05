@@ -4,27 +4,51 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Agregator - Drag & Drop</title>
+   <title>Agregator - Synthwave RSS Reader</title>
    <link rel="stylesheet" href="styles/main.css">
    <link rel="stylesheet" href="styles/widgets.css">
+   <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
    <!-- SortableJS pour le drag-and-drop -->
    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 </head>
 
 <body>
    <div class="app-container">
-      <!-- Barre d'ajout de flux -->
-      <div class="toolbar">
-         <input type="text" id="rss-url-input" placeholder="Coller l'URL du flux RSS ici...">
-         <button id="add-rss-btn" class="neon-button">Ajouter / Add</button>
+      <!-- En-tête -->
+      <header class="app-header">
+         <h1>🌐 AGREGATOR</h1>
+         <p class="subtitle">Glissez-déposez des liens RSS pour les afficher ici</p>
+         <p class="subtitle-en">Drag & drop RSS feed URLs to display them</p>
+         <button id="add-manual-btn" class="neon-button">+ Ajouter manuellement / Add manually</button>
+      </header>
+
+      <!-- Zone de drop pour les liens RSS -->
+      <div id="drop-zone" class="drop-zone">
+         <p>📌 <strong>ZONE DE DÉPÔT</strong></p>
+         <p>Glissez-déposez un lien RSS ici pour l'ajouter</p>
+         <p class="drop-zone-en"><em>Drag & drop an RSS feed URL here to add it</em></p>
+         <p class="example">Exemple: <code>https://www.lemonde.fr/rss/une.xml</code></p>
       </div>
 
-      <!-- Zone des widgets (drag-and-drop) -->
+      <!-- Conteneur des widgets (flux RSS affichés) -->
       <div id="widgets-container" class="widgets-container">
          <!-- Les widgets seront ajoutés ici dynamiquement -->
       </div>
+
+      <!-- Fenêtre modale pour ajouter manuellement un flux -->
+      <div id="manual-add-modal" class="modal hidden">
+         <div class="modal-content">
+            <h2>Ajouter un flux RSS / Add an RSS Feed</h2>
+            <input type="text" id="rss-url-input" placeholder="Coller l'URL du flux RSS ici...">
+            <div class="modal-buttons">
+               <button id="cancel-btn" class="neon-button">Annuler / Cancel</button>
+               <button id="confirm-add-btn" class="neon-button">Ajouter / Add</button>
+            </div>
+         </div>
+      </div>
    </div>
 
+   <!-- Scripts -->
    <script src="scripts/rss-parser.js"></script>
    <script src="scripts/widget-manager.js"></script>
    <script src="scripts/drag-and-drop.js"></script>

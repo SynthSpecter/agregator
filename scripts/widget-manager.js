@@ -1,7 +1,7 @@
 // Ajoute un widget pour un flux RSS
-function addRSSWidget(url, title = 'Nouveau Flux') {
+function addRSSWidget(url, title) {
   const widgetsContainer = document.getElementById('widgets-container')
-  const widgetId = `widget-${Date.now()}` // ID unique
+  const widgetId = `widget-${Date.now()}`
 
   const widget = document.createElement('div')
   widget.className = 'widget'
@@ -14,12 +14,12 @@ function addRSSWidget(url, title = 'Nouveau Flux') {
             <button class="widget-delete" onclick="deleteWidget('${widgetId}')">✕</button>
         </div>
         <div class="widget-content" id="content-${widgetId}">
-            <p>Chargement en cours... / Loading...</p>
+            <p>⏳ Chargement en cours... / Loading...</p>
         </div>
     `
 
   widgetsContainer.appendChild(widget)
-  loadRSSFeed(widgetId, url) // Charge le flux RSS
+  loadRSSFeed(widgetId, url)
 }
 
 // Supprime un widget
@@ -27,32 +27,52 @@ function deleteWidget(widgetId) {
   const widget = document.querySelector(`.widget[data-id="${widgetId}"]`)
   if (widget) {
     widget.remove()
-    // Sauvegarder la suppression (optionnel)
     saveWidgetsOrder()
   }
 }
 
 // Charge un flux RSS et affiche son contenu
 async function loadRSSFeed(widgetId, url) {
+  const contentElement = document.getElementById(`content-${widgetId}`)
   try {
-    const feed = await parseRSS(url) // Utilise rss-parser.js
-    const contentElement = document.getElementById(`content-${widgetId}`)
-    contentElement.innerHTML = ''
+    contentElement.innerHTML = '<p>⏳ Chargement... / Loading...</p>'
+    const feed = await parseRSS(url)
 
+    if (!feed.items || feed.items.length === 0) {
+      contentElement.innerHTML =
+        '<p>⚠️ Aucun article trouvé. / No articles found.</p>'
+      return
+    }
+
+    contentElement.innerHTML = ''
     feed.items.slice(0, 5).forEach((item) => {
-      // Affiche les 5 premiers articles
       const article = document.createElement('div')
       article.className = 'rss-item'
       article.innerHTML = `
                 <h3><a href="${item.link}" target="_blank" class="neon-link">${item.title}</a></h3>
-                <p>${new Date(item.pubDate).toLocaleDateString('fr-FR')}</p>
+                <p>${formatDate(item.pubDate || item.isoDate)}</p>
             `
       contentElement.appendChild(article)
     })
   } catch (error) {
     console.error('Erreur lors du chargement du flux :', error)
-    document.getElementById(`content-${widgetId}`).innerHTML = `
-            <p style="color: var(--neon-pink);">❌ Erreur de chargement / Loading error</p>
+    contentElement.innerHTML = `
+            <p style="color: var(--neon-pink);">❌ Erreur de chargement. Vérifiez l'URL du flux. / Loading error. Check the feed URL.</p>
         `
+  }
+}
+
+// Formate une date en français
+function formatDate(dateString) {
+  if (!dateString) return 'Date inconnue / Unknown date'
+  try {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('fr-FR', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    })
+  } catch {
+    return 'Date invalide / Invalid date'
   }
 }
