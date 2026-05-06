@@ -1,6 +1,7 @@
 # **NeonFeed 🌐**
 
 **Un agrégateur de flux RSS modulable avec interface drag-and-drop et style synthwave**
+
 **A customizable RSS feed aggregator with drag-and-drop interface and synthwave style**
 
 ---
@@ -37,7 +38,6 @@ Perfect for following your favorite news, blogs, or projects **without leaving y
 
 ## **✨ Fonctionnalités / Features**
 
-|----------------|---------|
 | ✅ **Drag-and-Drop** | Ajoutez des flux en glissant-déposant des liens RSS. / Add feeds by dragging and dropping RSS links. |
 | ✅ **Interface modulable** | Organisez vos widgets comme vous le souhaitez. / Organize your widgets as you like. |
 | ✅ **Style Synthwave** | Thème rétro avec couleurs néon et animations. / Retro theme with neon colors and animations. |
