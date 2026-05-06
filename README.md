@@ -39,11 +39,17 @@ Perfect for following your favorite news, blogs, or projects **without leaving y
 ## **✨ Fonctionnalités / Features**
 
 | ✅ **Drag-and-Drop** | Ajoutez des flux en glissant-déposant des liens RSS. / Add feeds by dragging and dropping RSS links. |
+
 | ✅ **Interface modulable** | Organisez vos widgets comme vous le souhaitez. / Organize your widgets as you like. |
+
 | ✅ **Style Synthwave** | Thème rétro avec couleurs néon et animations. / Retro theme with neon colors and animations. |
+
 | ✅ **Proxy CORS local** | Contourne les restrictions des navigateurs. / Bypasses browser CORS restrictions. |
+
 | ✅ **Parsing manuel des flux** | Pas de dépendance externe pour lire les RSS. / No external dependency to parse RSS feeds. |
+
 | ✅ **Sauvegarde locale** | Vos flux et leur ordre sont sauvegardés. / Your feeds and their order are saved locally. |
+
 | ✅ **Bilingue (FR/EN)** | Interface et documentation en français et anglais. / Bilingual interface and documentation (FR/EN). |
 
 ---
