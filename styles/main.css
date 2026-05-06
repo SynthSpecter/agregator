@@ -1,103 +1,75 @@
-@font-face {
-  font-family: Audiowide;
-  src: url(../assets/fonts/Audiowide-Regular.ttf);
+:root {
+  --neon-pink: #ff2ced;
+  --neon-blue: #05d9e8;
+  --neon-purple: #d300c5;
+  --bg-dark: #111;
+  --bg-darker: #0a0a0a;
 }
 
-/* Global styles */
 body {
-  background: radial-gradient(circle at center, #2b1055, #7597de);
-  color: #f5d042;
-  font-family: 'Audiowide', sans-serif;
   margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 20px;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--neon-blue);
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
 }
 
-.container {
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
   text-align: center;
-  max-width: 900px;
-  width: 100%;
-}
-
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.2em;
-}
-
-.subtitle {
-  color: #ffc857;
-  margin-bottom: 30px;
-}
-
-/* Filters */
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 25px;
-}
-
-input,
-select,
-button {
-  padding: 10px;
-  font-family: inherit;
-  font-size: 1em;
-  border: 2px solid #f5d042;
-  background: transparent;
-  color: #f5d042;
-  border-radius: 6px;
-  outline: none;
-}
-
-button {
-  background-color: #f5d042;
-  color: #2b1055;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-button:hover {
-  background-color: #fff2a8;
-}
-
-/* Listings */
-.listings {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-}
-
-.card {
-  background: rgba(10, 0, 25, 0.7);
-  border: 1px solid #f5d042;
-  border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(245, 208, 66, 0.4);
-  text-align: left;
+  background-color: var(--bg-darker);
+  border-bottom: 2px solid var(--neon-purple);
 }
 
-.card h3 {
-  margin-top: 0;
-  color: #f8e473;
+.app-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
 }
 
-.card p {
-  margin: 6px 0;
+.subtitle,
+.subtitle-en {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: var(--neon-blue);
 }
 
-.card .price {
-  font-size: 1.2em;
-  color: #f5d042;
-}
-
-.source {
-  font-size: 0.8em;
-  color: #aaa;
+.neon-button {
+  background-color: transparent;
+  border: 2px solid var(--neon-pink);
+  color: var(--neon-pink);
+  padding: 10px 20px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-shadow: 0 0 5px var(--neon-pink);
+  box-shadow: 0 0 10px var(--neon-pink);
   margin-top: 10px;
-  text-align: right;
+}
+
+.neon-button:hover {
+  background-color: var(--neon-pink);
+  color: var(--bg-dark);
+  box-shadow:
+    0 0 20px var(--neon-pink),
+    0 0 30px var(--neon-pink);
+}
+
+.neon-link {
+  color: var(--neon-pink);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.neon-link:hover {
+  text-shadow: 0 0 10px var(--neon-pink);
 }

@@ -20,12 +20,3 @@ function saveWidgetsOrder() {
   }))
   localStorage.setItem('agregatorWidgets', JSON.stringify(order))
 }
-
-// Charge les widgets sauvegardés
-function loadSavedWidgets() {
-  const savedWidgets =
-    JSON.parse(localStorage.getItem('agregatorWidgets')) || []
-  savedWidgets.forEach((widget) => {
-    addRSSWidget(widget.url, widget.title)
-  })
-}

@@ -1,18 +1,17 @@
 {
   "name": "agregator",
   "version": "1.0.0",
-  "description": "Un agrégateur de flux polyvalent et stylisé | A versatile and stylized feed aggregator",
+  "description": "Un agrégateur de flux RSS avec interface drag-and-drop",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "node-fetch": "^3.3.2"
-  }
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "node-fetch": "^2.6.11"
+  },
+  "author": "Kévin Thouroude-Leroux",
+  "license": "MIT"
 }

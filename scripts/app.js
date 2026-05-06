@@ -1,6 +1,3 @@
-// Variables globales
-let draggedURL = null
-
 // Initialisation
 document.addEventListener('DOMContentLoaded', () => {
   const dropZone = document.getElementById('drop-zone')
@@ -10,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmAddBtn = document.getElementById('confirm-add-btn')
   const cancelBtn = document.getElementById('cancel-btn')
   const rssUrlInput = document.getElementById('rss-url-input')
+
+  // Charge les widgets sauvegardés
+  loadSavedWidgets()
 
   // Écouteurs pour la zone de drop
   dropZone.addEventListener('dragover', (e) => {
@@ -26,12 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     dropZone.classList.remove('drag-over')
 
     // Récupérer l'URL glissée
-    const url = e.dataTransfer.getData('text/uri-list')
+    const url =
+      e.dataTransfer.getData('text/uri-list') ||
+      e.dataTransfer.getData('text/plain')
     if (url && isValidRSSUrl(url)) {
       addRSSWidget(url, getDomainName(url))
     } else {
-      alert(
-        "❌ L'URL glissée n'est pas un flux RSS valide. / The dropped URL is not a valid RSS feed.",
+      showError(
+        "❌ L'URL glissée n'est pas valide. Essayez un flux RSS comme https://github.com/trending.rss",
       )
     }
   })
@@ -50,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
       rssUrlInput.value = ''
       modal.classList.add('hidden')
     } else {
-      alert(
-        '❌ Veuillez entrer une URL de flux RSS valide. / Please enter a valid RSS feed URL.',
+      showError(
+        '❌ Veuillez entrer une URL valide (ex: https://github.com/trending.rss)',
       )
     }
   })
@@ -76,7 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Vérifie si une URL est potentiellement un flux RSS
 function isValidRSSUrl(url) {
-  return url.startsWith('http://') || url.startsWith('https://')
+  try {
+    const parsedUrl = new URL(url)
+    return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:'
+  } catch {
+    return false
+  }
 }
 
 // Extrait le nom de domaine d'une URL pour le titre du widget
@@ -88,7 +95,14 @@ function getDomainName(url) {
       .replace('.com', '')
       .replace('.fr', '')
       .replace('.net', '')
+      .replace('.org', '')
+      .replace('.io', '')
   } catch {
     return 'Nouveau Flux / New Feed'
   }
+}
+
+// Affiche une erreur dans une alerte
+function showError(message) {
+  alert(message)
 }
